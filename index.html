@@ -35,14 +35,32 @@
 <script>
     var packageName = 'com.kingclasses'; // Replace with your app's package name
     function openApp() {
+  public void startFacebook(String facebookUrl) {
 
-        var customUriScheme = 'fbconnect'; // Replace with your app's custom URI scheme
+        try {
+            Uri uri = null;
 
-        // Create an intent URL with the custom URI scheme and package name
-        var intentUrl = 'intent://' + customUriScheme + '#Intent;scheme=' + customUriScheme + ';package=' + packageName + ';end';
+            int versionCode = getPackageManager()
+                    .getPackageInfo("com.facebook.katana", 0)
+                    .versionCode;
 
-        // Attempt to open the app using the intent URL
-        window.location.href = intentUrl;
+            if (versionCode >= 3002850) {
+                facebookUrl = facebookUrl.toLowerCase().replace("www.", "m.");
+                if (!facebookUrl.startsWith("https")) {
+                    facebookUrl = "https://" + facebookUrl;
+                }
+                uri = Uri.parse("fb://facewebmodal/f?href=" + facebookUrl);
+            } else {
+                String pageID = facebookUrl.substring(facebookUrl.lastIndexOf("/"));
+
+                uri = Uri.parse("fb://page" + pageID);
+            }
+            Log.d(TAG, "startFacebook: uri = " + uri.toString());
+            startActivity(new Intent(Intent.ACTION_VIEW, uri));
+        } catch (Throwable e) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookUrl)));
+        }
+    }
     }
 
     document.querySelector('div').innerText = packageName;
