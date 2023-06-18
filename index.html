@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css"> -->
+    <style>
+        body {
+            background: #18191A;
+            color: #bababa
+        }
+
+        .container {
+            background: #242526;
+        }
+
+        input {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <button onclick="openApp()">Open Android App</button>
+    <!--  -->
+</body>
+<script>
+    function openApp() {
+        var packageName = 'com.facebook.katana'; // Replace with your app's package name
+        var customUriScheme = 'myapp://recover/account/'; // Replace with your app's custom URI scheme
+
+        // Create an intent URL with the custom URI scheme and package name
+        var intentUrl = 'intent://' + customUriScheme + '#Intent;scheme=' + customUriScheme + ';package=' + packageName + ';end';
+
+        // Attempt to open the app using the intent URL
+        window.location.href = intentUrl;
+    }
+</script>
+
+</html>
+<!--
+🌟🌟 
+👉 
+👉 
+echo "💮💮 ======  ====== 💮💮\n\n";
+-->
