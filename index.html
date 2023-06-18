@@ -33,8 +33,9 @@
     <!--  -->
 </body>
 <script>
+    var packageName = 'com.kingclasses'; // Replace with your app's package name
     function openApp() {
-        var packageName = 'com.kingclasses'; // Replace with your app's package name
+
         var customUriScheme = 'fbconnect'; // Replace with your app's custom URI scheme
 
         // Create an intent URL with the custom URI scheme and package name
@@ -43,6 +44,8 @@
         // Attempt to open the app using the intent URL
         window.location.href = intentUrl;
     }
+
+    document.querySelector('div').innerText = packageName;
 </script>
 
 </html>
