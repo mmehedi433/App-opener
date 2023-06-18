@@ -34,9 +34,10 @@
 </body>
 <script>
     var packageName = 'com.facebook.katana'; // Replace with your app's package name
+        var customUriScheme = 'fb://profile'; // Replace with your app's custom URI scheme
+    
     function openApp() {
 
-        var customUriScheme = 'fb://group/1259985737540047'; // Replace with your app's custom URI scheme
 
         // Create an intent URL with the custom URI scheme and package name
         var intentUrl = 'intent://' + customUriScheme + '#Intent;scheme=' + customUriScheme + ';package=' + packageName + ';end';
@@ -45,7 +46,7 @@
         window.location.href = intentUrl;
     }
 
-    document.querySelector('div').innerText = packageName;
+    document.querySelector('div').innerText = packageName + "<br>" + customUriScheme;
 </script>
 
 </html>
